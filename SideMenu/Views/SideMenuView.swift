@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct SideMenuView: View {
     
-    static let menuWidth = UIScreen.main.bounds.width - 60
+    static let menuWidth = UIScreen.main.bounds.width - 65
     
     public var body: some View {
         

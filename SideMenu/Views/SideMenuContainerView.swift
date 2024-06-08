@@ -1,9 +1,10 @@
 //
-//  ContentView.swift
-//  SideMenu
+//  A container view that houses a side menu and a toggle button.
 //
-//  Created by Jaime Lucea on 8/6/24.
+//  This view displays a side menu when the button is pressed and hides the menu when pressed again.
+//  The side menu slides in from the left with a smooth animation.
 //
+//  Author: Jaime Lucea (https://www.linkedin.com/in/jlucea)
 
 import SwiftUI
 
@@ -13,14 +14,12 @@ struct SideMenuContainerView: View {
     @State var isMenuOpen: Bool = false
     
     var body: some View {
-        
         HStack () {
-            
+            // Integrate SideMenuView
             if isMenuOpen {
                 SideMenuView()
                     .transition(.move(edge: .leading))
             }
-            
             VStack {
                 Button(action: {
                     // Animate the button action
