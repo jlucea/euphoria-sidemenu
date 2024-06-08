@@ -7,39 +7,44 @@
 
 import SwiftUI
 
-struct MenuContainerView: View {
+struct SideMenuContainerView: View {
     
+    // State to track if the side menu is open or closed
     @State var isMenuOpen: Bool = false
     
     var body: some View {
         
-        HStack (alignment: .top) {
+        HStack () {
             
             if isMenuOpen {
                 SideMenuView()
+                    .transition(.move(edge: .leading))
             }
             
             VStack {
                 Button(action: {
-                    self.isMenuOpen.toggle()
+                    // Animate the button action
+                    withAnimation {
+                        // Toggle the state of isMenuOpen
+                        self.isMenuOpen.toggle()
+                    }
                 }, label: {
                     Image(systemName: "square.leftthird.inset.filled")
                         .resizable()
                         .foregroundColor(.black)
-                        .frame(width: 24, height: 24)
+                        .frame(width: 28, height: 28)
                 })
-                
-                Spacer()  // Push the button to the top
             }
             .padding(.vertical)
             .padding(.horizontal, isMenuOpen ? 5 : 25)
             
+            // Push the HStack content to the left
             Spacer()
         }
-        
+        .animation(.default, value: isMenuOpen)
     }
 }
 
 #Preview {
-    MenuContainerView()
+    SideMenuContainerView()
 }
